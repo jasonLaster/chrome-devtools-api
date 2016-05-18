@@ -1,34 +1,10 @@
-// Copyright (c) 2015 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-//This should be executed immediately after InspectorBackend and InspectorBackendCommands
-
-WebInspector.InspectorBackendHostedMode = {};
-
-/**
- * @param {string} jsonUrl
- */
-WebInspector.InspectorBackendHostedMode.loadFromJSONIfNeeded = function(jsonUrl)
-{
-    if (InspectorBackend.isInitialized())
-        return;
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", jsonUrl, false);
-    xhr.send(null);
-
-    var schema = JSON.parse(xhr.responseText);
-    var code = WebInspector.InspectorBackendHostedMode.generateCommands(schema);
-    eval(code);
-}
+// comes from front_end/sdk/InspectorBackendHostedMode.js
 
 /**
  * @param {*} schema
  * @return {string}
  */
-WebInspector.InspectorBackendHostedMode.generateCommands = function(schema)
-{
+function generateCommands(schema) {
     var jsTypes = { integer: "number", array: "object" };
     var rawTypes = {};
     var result = [];
@@ -46,12 +22,18 @@ WebInspector.InspectorBackendHostedMode.generateCommands = function(schema)
     {
         return [group0, group1][groupIndex].toUpperCase();
     }
+
+    function toTitleCase(text)
+    {
+      return text.substring(0, 1).toUpperCase() + text.substring(1);
+    }
+
     function generateEnum(enumName, items)
     {
         var members = [];
         for (var m = 0; m < items.length; ++m) {
             var value = items[m];
-            var name = value.replace(/-(\w)/g, toUpperCase.bind(null, 1)).toTitleCase();
+            var name = toTitleCase(value.replace(/-(\w)/g, toUpperCase.bind(null, 1)));
             name = name.replace(/HTML|XML|WML|API/ig, toUpperCase.bind(null, 0));
             members.push(name + ": \"" + value +"\"");
         }
@@ -71,7 +53,7 @@ WebInspector.InspectorBackendHostedMode.generateCommands = function(schema)
                 for (var k = 0; k < properties.length; ++k) {
                     var property = properties[k];
                     if ((property["type"] === "string") && property["enum"])
-                        result.push(generateEnum(domain.domain + "." + type.id + property["name"].toTitleCase(), property["enum"]));
+                        result.push(generateEnum(domain.domain + "." + type.id + toTitleCase(property["name"]), property["enum"]));
                 }
             }
         }
@@ -122,4 +104,4 @@ WebInspector.InspectorBackendHostedMode.generateCommands = function(schema)
     return result.join("\n");
 }
 
-WebInspector.InspectorBackendHostedMode.loadFromJSONIfNeeded("../protocol.json");
+module.exports = generateCommands;

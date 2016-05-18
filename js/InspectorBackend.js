@@ -457,7 +457,7 @@ InspectorBackendClass.Connection.prototype = {
         domains.forEach(function(domain) { this._agents[domain].suppressErrorLogging(); }, this);
     },
 
-    __proto__: WebInspector.Object.prototype
+    __proto__: {}
 
 }
 
@@ -728,4 +728,4 @@ InspectorBackendClass.Options = {
     suppressRequestErrors: false
 }
 
-InspectorBackend = new InspectorBackendClass();
+module.exports = InspectorBackendClass;

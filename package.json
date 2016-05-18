@@ -1,11 +1,14 @@
 {
   "name": "chrome-devtools-api",
   "version": "0.0.1",
-  "description": "Extracted Chrome DevTools API frontend",
-  "main": "index.js",
+  "description": "Chrome DevTools API frontend",
+  "main": "js/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Jason Laster",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.4.5"
+  }
 }
