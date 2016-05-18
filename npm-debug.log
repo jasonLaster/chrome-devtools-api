@@ -1,0 +1,99 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.8.3
+3 info using node@v5.10.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/jlaster/src/mozilla/chrome-devtools-api',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/jlaster/.npm/chrome-devtools-api/0.0.2/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/jlaster/.npm correctMkdir not in flight; initializing
+10 info lifecycle chrome-devtools-api@0.0.2~prepublish: chrome-devtools-api@0.0.2
+11 silly lifecycle chrome-devtools-api@0.0.2~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/jlaster/.npm/chrome-devtools-api/0.0.2/package.tgz',
+12 verbose tar pack   '/Users/jlaster/src/mozilla/chrome-devtools-api' ]
+13 verbose tarball /Users/jlaster/.npm/chrome-devtools-api/0.0.2/package.tgz
+14 verbose folder /Users/jlaster/src/mozilla/chrome-devtools-api
+15 verbose addLocalTarball adding from inside cache /Users/jlaster/.npm/chrome-devtools-api/0.0.2/package.tgz
+16 verbose correctMkdir /Users/jlaster/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd chrome-devtools-api@0.0.2
+18 verbose afterAdd /Users/jlaster/.npm/chrome-devtools-api/0.0.2/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/jlaster/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/jlaster/.npm/chrome-devtools-api/0.0.2/package/package.json written
+21 silly publish { name: 'chrome-devtools-api',
+21 silly publish   version: '0.0.2',
+21 silly publish   description: 'Chrome DevTools API frontend',
+21 silly publish   main: 'js/index.js',
+21 silly publish   scripts: { test: 'mocha test' },
+21 silly publish   author: { name: 'Jason Laster' },
+21 silly publish   devDependencies: { 'expect.js': '^0.3.1', mocha: '^2.4.5' },
+21 silly publish   readme: '### Chrome DevTools API\n\nThe project extracts the chrome devtools frontend api. This includes:\n\n1) the protocol file, which defines the API commands and events\n2) the inspector backend which maintains the websocket connection as well\nas agents, which receive commands and events.\n\n#### registerAgents\n\nregisterAgents is a function that maps the protocol into a series of InspectorBackend\ncalls for registering agent commands and events.\n\n```js\nInspectorBackend.registerEvent("Inspector.inspect", ["object", "hints"]);\nInspectorBackend.registerEvent("Inspector.detached", ["reason"]);\nInspectorBackend.registerEvent("Inspector.targetCrashed", []);\nInspectorBackend.registerCommand("Page.addScriptToEvaluateOnLoad", [{"name": "scriptSource", "type": "string", "optional": false}], ["identifier"], false);\nInspectorBackend.registerCommand("Page.removeScriptToEvaluateOnLoad", [{"name": "identifier", "type": "string", "optional": false}], [], false);\nInspectorBackend.registerCommand("Page.setAutoAttachToCreatedPages", [{"name": "autoAttach", "type": "boolean", "optional": false}], [], false);\nInspectorBackend.registerEvent("Page.frameDetached", ["frameId"]);\nInspectorBackend.registerEvent("Page.frameStartedLoading", ["frameId"]);\n```\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '5c2bb0b85dbc534b2a7b9093776b693aac28b757',
+21 silly publish   _id: 'chrome-devtools-api@0.0.2',
+21 silly publish   _shasum: '3dd433102635ddf449ed01cd8ae241c7ae613e94',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name chrome-devtools-api
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'chrome-devtools-api',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'chrome-devtools-api',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/chrome-devtools-api
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/jlaster/.npm/chrome-devtools-api/0.0.2/package.tgz
+30 verbose request uri https://registry.npmjs.org/chrome-devtools-api
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 2:11:16 PM
+33 verbose request using bearer token for auth
+34 verbose request id 1af4a7032d59d30e
+35 http request PUT https://registry.npmjs.org/chrome-devtools-api
+36 http 403 https://registry.npmjs.org/chrome-devtools-api
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Wed, 18 May 2016 18:08:37 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-jfk1026-JFK',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1463594916.555502,VS0,VE968',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/jlaster/.npm/registry.npmjs.org/chrome-devtools-api on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 0.0.2." : chrome-devtools-api
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:199:22)
+40 verbose stack     at emitTwo (events.js:100:13)
+40 verbose stack     at Request.emit (events.js:185:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+40 verbose stack     at emitOne (events.js:95:20)
+40 verbose stack     at Request.emit (events.js:182:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:963:12)
+41 verbose statusCode 403
+42 verbose pkgid chrome-devtools-api
+43 verbose cwd /Users/jlaster/src/mozilla/chrome-devtools-api
+44 error Darwin 15.3.0
+45 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+46 error node v5.10.1
+47 error npm  v3.8.3
+48 error code E403
+49 error "You cannot publish over the previously published version 0.0.2." : chrome-devtools-api
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

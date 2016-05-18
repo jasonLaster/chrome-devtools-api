@@ -1,6 +1,6 @@
 {
   "name": "chrome-devtools-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Chrome DevTools API frontend",
   "main": "js/index.js",
   "scripts": {
